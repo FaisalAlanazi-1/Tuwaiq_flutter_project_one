@@ -21,5 +21,7 @@ class Assets {
   /// Assets for assetsImagesKingdomTower
   /// assets/images/kingdom_tower.jpg
   static const String assetsImagesKingdomTower = "assets/images/kingdom_tower.jpg";
+
+ static const String splashImage =  "assets/images/splash.jpg" ; 
 }
 

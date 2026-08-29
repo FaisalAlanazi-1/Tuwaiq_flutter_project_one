@@ -1,9 +1,9 @@
-import 'package:faisal_alanazi_proj1/screens/home/home_screen.dart';
+
+import 'package:faisal_alanazi_proj1/screens/splash/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 
-
 void main() {
-
   runApp(const MainApp());
 }
 
@@ -12,9 +12,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:HomeScreen()
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home:SplashScreen());
   }
 }

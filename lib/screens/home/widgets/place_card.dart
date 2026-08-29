@@ -1,31 +1,34 @@
-
-import 'package:faisal_alanazi_proj1/constants/text_styles.dart';
+import 'package:faisal_alanazi_proj1/core/constants/text_styles.dart';
 import 'package:faisal_alanazi_proj1/screens/home/widgets/favorite_button.dart';
-import 'package:faisal_alanazi_proj1/screens/home/widgets/place_rating.dart';
+import 'package:faisal_alanazi_proj1/core/widget/place_rating.dart';
 import 'package:flutter/material.dart';
 
 class PlaceCard extends StatelessWidget {
-  final String title;
-  final String image;
-  final double rating;
+  final Map<String, dynamic> place;
   final bool? isFavoriteTop;
+  final Set<Map<String, dynamic>> favoritePlaces;
+  final Function mangePlace;
+
   const PlaceCard({
     super.key,
-    required this.title,
-    required this.image,
-    required this.rating,
+
     this.isFavoriteTop,
+    required this.place,
+    required this.mangePlace,
+    required this.favoritePlaces,
   });
 
   @override
   Widget build(BuildContext context) {
+    final bool isFav = favoritePlaces.any((e) => e['name'] == place['name']);
+
     return Card(
       child: Stack(
         children: [
           Positioned.fill(
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(12),
-              child: Image.asset(image, fit: BoxFit.fill),
+              child: Image.asset(place['image'], fit: BoxFit.fill),
             ),
           ),
           Positioned(
@@ -53,21 +56,25 @@ class PlaceCard extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            title,
+                            place['name'],
                             style: AppTextStyles.cardTitleSmall,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         Visibility(
-                          visible: isFavoriteTop != true,
-                          child: FavotiteButton(),
+                          visible: false,
+                          child: FavotiteButton(
+                            isSelected: isFav,
+                            mangePlace: mangePlace,
+                            place: place,
+                          ),
                         ),
                       ],
                     ),
 
                     // place rating widget
-                    PlaceRating(rating: rating),
+                    PlaceRating(rating: place['rating']),
                   ],
                 ),
               ),
@@ -78,7 +85,12 @@ class PlaceCard extends StatelessWidget {
                   bottom: 0,
                   right: 0,
                   top: 90,
-                  child: FavotiteButton(size: 17),
+                  child: FavotiteButton(
+                    isSelected: isFav,
+                    mangePlace: mangePlace,
+                    size: 17,
+                    place: place,
+                  ),
                 )
               : SizedBox.shrink(),
         ],
@@ -86,5 +98,3 @@ class PlaceCard extends StatelessWidget {
     );
   }
 }
-
-

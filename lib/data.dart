@@ -1,5 +1,5 @@
 
-import 'package:faisal_alanazi_proj1/constants/gen/assets.dart';
+import 'package:faisal_alanazi_proj1/core/constants/gen/assets.dart';
 
 List<Map<String, dynamic>> places = [
   {

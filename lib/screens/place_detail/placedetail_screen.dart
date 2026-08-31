@@ -1,13 +1,14 @@
 import 'package:faisal_alanazi_proj1/core/constants/app_colors.dart';
 import 'package:faisal_alanazi_proj1/core/constants/text_styles.dart';
 import 'package:faisal_alanazi_proj1/core/widget/place_rating.dart';
+import 'package:faisal_alanazi_proj1/model/place_model.dart';
 import 'package:faisal_alanazi_proj1/screens/place_detail/widget/back_button.dart';
 import 'package:faisal_alanazi_proj1/screens/place_detail/widget/description_widget.dart';
 import 'package:faisal_alanazi_proj1/screens/place_detail/widget/location_widget.dart';
 import 'package:flutter/material.dart';
 
 class PlacedetailScreen extends StatelessWidget {
-  final Map<String, dynamic> place;
+  final PlaceModel place;
   const PlacedetailScreen({super.key, required this.place});
 
   @override
@@ -20,7 +21,7 @@ class PlacedetailScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * 0.4,
-              child: Image.asset(place['image'], fit: BoxFit.fill),
+              child: Image.asset(place.image, fit: BoxFit.fill),
             ),
 
             // back button
@@ -38,7 +39,7 @@ class PlacedetailScreen extends StatelessWidget {
 class ContentWidget extends StatelessWidget {
   const ContentWidget({super.key, required this.place});
 
-  final Map<String, dynamic> place;
+  final PlaceModel place;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +60,13 @@ class ContentWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(place['name'], style: AppTextStyles.headlineLarge),
+            Text(place.name, style: AppTextStyles.headlineLarge),
             SizedBox(height: 10),
             //location
             LocationWidget(place: place),
             // rating
             SizedBox(height: 10),
-            PlaceRating(rating: place['rating'], textColor: Colors.black),
+            PlaceRating(rating: place.rating, textColor: Colors.black),
             // description
             SizedBox(height: 30),
             DescriptionWidget(place: place),

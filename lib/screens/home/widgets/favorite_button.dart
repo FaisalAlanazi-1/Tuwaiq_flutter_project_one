@@ -1,10 +1,11 @@
 import 'package:faisal_alanazi_proj1/core/constants/app_colors.dart';
+import 'package:faisal_alanazi_proj1/model/place_model.dart';
 import 'package:flutter/material.dart';
 
 class FavotiteButton extends StatelessWidget {
   final double? size;
   final bool isSelected;
-  final Map<String, dynamic> place;
+  final PlaceModel place;
   final Function mangePlace;
   FavotiteButton({
     super.key,

@@ -1,4 +1,5 @@
 import 'package:faisal_alanazi_proj1/core/constants/text_styles.dart';
+import 'package:faisal_alanazi_proj1/model/place_model.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionWidget extends StatelessWidget {
@@ -7,7 +8,7 @@ class DescriptionWidget extends StatelessWidget {
     required this.place,
   });
 
-  final Map<String, dynamic> place;
+  final PlaceModel place;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class DescriptionWidget extends StatelessWidget {
       children: [
         Text('Description', style: AppTextStyles.sectionTitle),
         Text(
-          place['description'],
+          place.description,
           style: AppTextStyles.bodyText,
         ),
       ],

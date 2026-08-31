@@ -1,4 +1,5 @@
 import 'package:faisal_alanazi_proj1/core/constants/app_colors.dart';
+import 'package:faisal_alanazi_proj1/model/place_model.dart';
 import 'package:faisal_alanazi_proj1/screens/favorite/favorite_screen.dart';
 import 'package:faisal_alanazi_proj1/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,17 +14,17 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
 
   late int index;
-Set<Map<String , dynamic>> favoritePlaces = {}  ;
- void mangePlace(Map<String, dynamic> place) {
+Set<PlaceModel> favoritePlaces = {}  ;
+ void mangePlace(PlaceModel place) {
    setState(() {
       bool isFavorite = favoritePlaces.any((e) {
-      return e['name'] == place['name'];
+      return e.name == place.name;
     });
     if (!isFavorite) {
       favoritePlaces.add(place);
     } else {
       favoritePlaces.removeWhere((e) {
-        return e['name'] == place['name'];
+        return e.name == place.name;
       });
     }
    });

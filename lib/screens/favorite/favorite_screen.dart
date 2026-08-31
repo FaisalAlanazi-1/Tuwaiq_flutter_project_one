@@ -1,10 +1,11 @@
 import 'package:faisal_alanazi_proj1/core/constants/app_colors.dart';
 import 'package:faisal_alanazi_proj1/core/constants/text_styles.dart';
+import 'package:faisal_alanazi_proj1/model/place_model.dart';
 import 'package:faisal_alanazi_proj1/screens/place_detail/placedetail_screen.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  final Set favoritePlaces;
+  final Set<PlaceModel> favoritePlaces;
   const FavoriteScreen({super.key, required this.favoritePlaces});
 
   @override
@@ -40,7 +41,7 @@ class FavoriteScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: ClipRRect(
                           borderRadius: BorderRadiusGeometry.circular(12),
-                          child: Image.asset(place['image'], fit: BoxFit.fill),
+                          child: Image.asset(place.image, fit: BoxFit.fill),
                         ),
                       ),
                       Expanded(
@@ -48,14 +49,14 @@ class FavoriteScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              place['name'],
+                              place.name,
                               style: AppTextStyles.cardTitleSmall.copyWith(
                                 color: Colors.black,
                               ),
                             ),
                             SizedBox(height: 5),
                             Text(
-                              place['location'],
+                              place.location,
                               style: AppTextStyles.locationText,
                             ),
                             SizedBox(height: 10),
@@ -66,7 +67,7 @@ class FavoriteScreen extends StatelessWidget {
                                   color: AppColors.iconRating,
                                 ),
                                 Text(
-                                  '${place['rating']}',
+                                  '${place.rating}',
                                   style: AppTextStyles.ratingOnLight,
                                 ),
                               ],

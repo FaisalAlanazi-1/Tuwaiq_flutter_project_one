@@ -1,12 +1,13 @@
 import 'package:faisal_alanazi_proj1/core/constants/text_styles.dart';
+import 'package:faisal_alanazi_proj1/model/place_model.dart';
 import 'package:faisal_alanazi_proj1/screens/home/widgets/favorite_button.dart';
 import 'package:faisal_alanazi_proj1/core/widget/place_rating.dart';
 import 'package:flutter/material.dart';
 
 class PlaceCard extends StatelessWidget {
-  final Map<String, dynamic> place;
+  final PlaceModel place;
   final bool? isFavoriteTop;
-  final Set<Map<String, dynamic>> favoritePlaces;
+  final Set<PlaceModel> favoritePlaces;
   final Function mangePlace;
 
   const PlaceCard({
@@ -20,7 +21,7 @@ class PlaceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isFav = favoritePlaces.any((e) => e['name'] == place['name']);
+    final bool isFav = favoritePlaces.any((e) => e.name == place.name);
 
     return Card(
       child: Stack(
@@ -28,7 +29,7 @@ class PlaceCard extends StatelessWidget {
           Positioned.fill(
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(12),
-              child: Image.asset(place['image'], fit: BoxFit.fill),
+              child: Image.asset(place.image, fit: BoxFit.fill),
             ),
           ),
           Positioned(
@@ -56,7 +57,7 @@ class PlaceCard extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            place['name'],
+                            place.name,
                             style: AppTextStyles.cardTitleSmall,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -74,7 +75,7 @@ class PlaceCard extends StatelessWidget {
                     ),
 
                     // place rating widget
-                    PlaceRating(rating: place['rating']),
+                    PlaceRating(rating: place.rating),
                   ],
                 ),
               ),

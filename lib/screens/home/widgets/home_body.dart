@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:faisal_alanazi_proj1/core/constants/app_colors.dart';
 import 'package:faisal_alanazi_proj1/core/constants/text_styles.dart';
+import 'package:faisal_alanazi_proj1/model/place_model.dart';
 import 'package:faisal_alanazi_proj1/screens/home/widgets/place_card.dart';
 import 'package:faisal_alanazi_proj1/screens/place_detail/placedetail_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,8 @@ class HomeBody extends StatefulWidget {
     required this.mangePlace,
     required this.favoritePlaces,
   });
-  final Set<Map<String, dynamic>> favoritePlaces;
-  final List<Map<String, dynamic>> listOfPlaces;
+  final Set<PlaceModel> favoritePlaces;
+  final List<PlaceModel> listOfPlaces;
   final Function mangePlace;
 
   @override
